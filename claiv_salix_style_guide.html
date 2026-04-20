@@ -1,0 +1,740 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal-50: #E1F5EE;
+    --teal-100: #9FE1CB;
+    --teal-400: #1D9E75;
+    --teal-600: #0F6E56;
+    --teal-800: #085041;
+    --teal-900: #04342C;
+    --gray-50: #F7F7F5;
+    --gray-100: #F1EFE8;
+    --gray-200: #D3D1C7;
+    --gray-400: #888780;
+    --gray-600: #5F5E5A;
+    --gray-800: #2C2C2A;
+    --amber-50: #FAEEDA;
+    --amber-400: #EF9F27;
+    --red-50: #FCEBEB;
+    --red-400: #E24B4A;
+    --red-700: #791F1F;
+  }
+
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a18; line-height: 1.6; }
+
+  .guide { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── section header ── */
+  .sec { margin-bottom: 64px; }
+  .sec-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-50); color: var(--teal-800); font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 99px; margin-bottom: 12px; letter-spacing: 0.02em; }
+  .sec-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-400); }
+  .sec-title { font-size: 13px; font-weight: 600; color: var(--gray-400); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid #f0f0ee; }
+  .divider { height: 1px; background: #f0f0ee; margin: 40px 0; }
+
+  /* ── HERO DEMO ── */
+  .hero-demo { background: linear-gradient(160deg, #f9faf8 0%, #f0f5f2 100%); border-radius: 20px; padding: 64px 48px; margin-bottom: 64px; position: relative; overflow: hidden; }
+  .hero-demo::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 70%); pointer-events:none; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #e8ede9; color: var(--teal-600); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 99px; margin-bottom: 20px; }
+  .hero-eyebrow-dot { width: 6px; height: 6px; background: var(--teal-400); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero-h1 { font-size: 52px; font-weight: 600; line-height: 1.08; letter-spacing: -0.03em; color: #111; margin-bottom: 18px; }
+  .hero-h1 span { color: var(--teal-400); }
+  .hero-sub { font-size: 17px; color: var(--gray-600); max-width: 460px; line-height: 1.65; margin-bottom: 32px; font-weight: 400; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-hero-primary { background: var(--teal-600); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 10px; border: none; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+  .btn-hero-primary:hover { background: var(--teal-800); transform: translateY(-1px); }
+  .btn-hero-ghost { background: transparent; color: var(--gray-600); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 20px; border-radius: 10px; border: 1px solid #ddd; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+  .btn-hero-ghost:hover { border-color: var(--teal-400); color: var(--teal-600); }
+  .hero-trust { margin-top: 36px; display: flex; align-items: center; gap: 10px; }
+  .hero-avatars { display: flex; }
+  .hero-av { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: var(--teal-100); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: var(--teal-800); margin-left: -8px; }
+  .hero-av:first-child { margin-left: 0; }
+  .hero-trust-text { font-size: 13px; color: var(--gray-600); }
+  .hero-trust-text strong { color: #111; font-weight: 600; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap { overflow: hidden; padding: 4px 0; margin-bottom: 64px; }
+  .marquee-track { display: flex; gap: 0; animation: marquee 18s linear infinite; width: max-content; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-item { display: flex; align-items: center; gap: 6px; padding: 8px 28px; border-right: 1px solid #eee; white-space: nowrap; font-size: 13px; font-weight: 500; color: var(--gray-600); }
+  .marquee-badge { width: 8px; height: 8px; background: var(--teal-400); border-radius: 50%; }
+
+  /* ── TYPOGRAPHY ── */
+  .type-stack { display: flex; flex-direction: column; gap: 20px; }
+  .type-row { display: flex; align-items: baseline; gap: 20px; padding: 16px 0; border-bottom: 1px solid #f5f5f3; }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta { font-size: 11px; font-weight: 500; color: var(--gray-400); min-width: 160px; flex-shrink: 0; font-family: 'Inter', sans-serif; line-height: 1.4; }
+  .t-display { font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; color: #111; }
+  .t-h1 { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 600; letter-spacing: -0.025em; color: #111; }
+  .t-h2 { font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: #111; }
+  .t-h3 { font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: #111; }
+  .t-body { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400; color: var(--gray-600); line-height: 1.7; }
+  .t-sm { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: var(--gray-400); }
+  .t-cap { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.04em; }
+  .t-url { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--teal-400); }
+
+  /* ── COLORS ── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+  .color-group { border-radius: 12px; overflow: hidden; border: 1px solid #f0f0ee; }
+  .color-swatch-main { height: 72px; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .color-swatch-main span { font-size: 11px; font-weight: 500; }
+  .color-stops { display: flex; }
+  .color-stop { flex: 1; height: 20px; }
+  .color-label { padding: 10px 12px; font-size: 12px; font-weight: 500; color: var(--gray-600); background: #fafaf8; border-top: 1px solid #f0f0ee; }
+  .color-hex { font-size: 11px; color: var(--gray-400); font-family: 'Inter', sans-serif; }
+
+  /* ── BUTTONS ── */
+  .btn-grid { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .btn { font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.15s; border-radius: 10px; border: none; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--teal-600); color: #fff; font-size: 14px; padding: 11px 22px; }
+  .btn-primary:hover { background: var(--teal-800); }
+  .btn-secondary { background: #fff; color: #111; font-size: 14px; padding: 11px 22px; border: 1px solid #e0e0dc; }
+  .btn-secondary:hover { border-color: var(--teal-400); color: var(--teal-600); }
+  .btn-ghost { background: transparent; color: var(--gray-600); font-size: 14px; padding: 11px 22px; border: 1px solid transparent; }
+  .btn-ghost:hover { background: var(--gray-100); color: #111; }
+  .btn-danger { background: var(--red-50); color: var(--red-700); font-size: 13px; padding: 9px 18px; border: 1px solid #f7c1c1; }
+  .btn-sm { font-size: 13px; padding: 8px 16px; border-radius: 8px; }
+  .btn-lg { font-size: 15px; padding: 14px 28px; border-radius: 12px; }
+  .btn-pill { border-radius: 99px; }
+  .btn-dis { opacity: 0.38; cursor: not-allowed; }
+  .btn-dis:hover { transform: none; }
+
+  /* ── BADGES ── */
+  .badge-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 99px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .b-teal { background: var(--teal-50); color: var(--teal-800); }
+  .b-amber { background: var(--amber-50); color: #633806; }
+  .b-red { background: var(--red-50); color: var(--red-700); }
+  .b-purple { background: #EEEDFE; color: #3C3489; }
+  .b-gray { background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+  .b-blue { background: #E6F1FB; color: #0C447C; }
+
+  /* ── CARDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .card { background: #fff; border: 1px solid #ebebea; border-radius: 14px; padding: 20px; transition: box-shadow 0.2s, transform 0.2s; }
+  .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .card-featured { border: 2px solid var(--teal-400); }
+  .card-featured-badge { display: inline-block; background: var(--teal-50); color: var(--teal-800); font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 99px; margin-bottom: 10px; }
+  .card-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #111; margin-bottom: 4px; }
+  .card-sub { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-400); }
+  .card-metric { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 600; color: #111; margin: 8px 0 4px; letter-spacing: -0.02em; }
+  .card-change { font-size: 12px; font-weight: 500; }
+  .up { color: var(--teal-600); }
+  .down { color: var(--red-400); }
+
+  /* ── BENTO GRID ── */
+  .bento { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; }
+  .bento-lg { grid-column: 1 / 2; grid-row: 1 / 3; background: var(--gray-50); border: 1px solid #ebebea; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; }
+  .bento-sm { background: var(--gray-50); border: 1px solid #ebebea; border-radius: 16px; padding: 20px; }
+  .bento-accent { background: var(--teal-900); border-radius: 16px; padding: 20px; }
+  .bento-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+  .bento-label-light { color: var(--teal-100); }
+  .bento-h { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; color: #111; margin-bottom: 6px; }
+  .bento-h-light { color: #fff; }
+  .bento-p { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-400); line-height: 1.6; }
+  .bento-p-light { color: var(--teal-100); }
+  .bento-stat { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 600; color: #111; letter-spacing: -0.03em; margin-top: 16px; }
+  .bento-stat-light { color: #fff; }
+
+  /* ── INPUTS ── */
+  .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .input-wrap { display: flex; flex-direction: column; gap: 5px; }
+  .input-label { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #111; }
+  .input-field { font-family: 'Inter', sans-serif; font-size: 14px; color: #111; padding: 10px 14px; border: 1px solid #e0e0dc; border-radius: 10px; background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+  .input-field:focus { border-color: var(--teal-400); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
+  .input-field.error { border-color: var(--red-400); }
+  .input-helper { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--gray-400); }
+  .input-error-msg { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--red-400); font-weight: 500; }
+
+  /* ── CHAT ── */
+  .chat-shell { background: var(--gray-50); border: 1px solid #ebebea; border-radius: 16px; overflow: hidden; }
+  .chat-topbar { background: #fff; border-bottom: 1px solid #ebebea; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+  .chat-av { width: 30px; height: 30px; border-radius: 50%; background: var(--teal-600); display: flex; align-items: center; justify-content: center; }
+  .chat-av-dot { width: 10px; height: 10px; background: var(--teal-100); border-radius: 50%; }
+  .chat-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #111; }
+  .chat-status { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--teal-400); font-weight: 500; }
+  .chat-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .bubble-user { align-self: flex-end; background: var(--teal-600); color: #fff; padding: 10px 14px; border-radius: 14px 14px 3px 14px; font-family: 'Inter', sans-serif; font-size: 14px; max-width: 70%; line-height: 1.5; }
+  .bubble-ai { align-self: flex-start; background: #fff; border: 1px solid #ebebea; padding: 12px 14px; border-radius: 14px 14px 14px 3px; font-family: 'Inter', sans-serif; font-size: 14px; max-width: 76%; line-height: 1.6; color: #111; }
+  .source-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .source-chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; background: var(--teal-50); color: var(--teal-800); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; }
+  .chat-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+  .chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid #ebebea; background: #fff; }
+  .chat-input { flex: 1; font-family: 'Inter', sans-serif; font-size: 14px; color: #111; padding: 9px 14px; border: 1px solid #e0e0dc; border-radius: 10px; background: #fff; outline: none; }
+  .chat-send { background: var(--teal-600); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; padding: 9px 16px; border-radius: 9px; border: none; cursor: pointer; }
+
+  /* ── TESTIMONIAL DARK ── */
+  .testimonial-dark { background: var(--teal-900); border-radius: 20px; padding: 48px; margin-bottom: 64px; }
+  .quote-mark { font-family: 'Inter', sans-serif; font-size: 72px; line-height: 0.8; color: var(--teal-400); margin-bottom: 16px; font-weight: 700; }
+  .quote-text { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; color: #fff; line-height: 1.5; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .quote-author { display: flex; align-items: center; gap: 12px; }
+  .quote-av { width: 42px; height: 42px; border-radius: 50%; background: var(--teal-400); display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #fff; }
+  .quote-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #fff; }
+  .quote-role { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--teal-100); }
+
+  /* ── HOW IT WORKS ── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step { background: var(--gray-50); border: 1px solid #ebebea; border-radius: 14px; padding: 24px; position: relative; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--teal-600); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .step-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #111; margin-bottom: 8px; }
+  .step-body { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-400); line-height: 1.6; }
+  .step-connector { position: absolute; top: 40px; right: -12px; width: 24px; height: 2px; background: var(--teal-200, #9FE1CB); z-index: 1; }
+
+  /* ── PRICING ── */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .pricing-card { background: #fff; border: 1px solid #ebebea; border-radius: 16px; padding: 24px; }
+  .pricing-card.featured { border: 2px solid var(--teal-400); background: var(--teal-50); }
+  .pricing-badge { display: inline-block; background: var(--teal-400); color: #fff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px; margin-bottom: 12px; }
+  .pricing-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--gray-600); margin-bottom: 4px; }
+  .pricing-price { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; color: #111; letter-spacing: -0.03em; }
+  .pricing-price span { font-size: 14px; font-weight: 400; color: var(--gray-400); }
+  .pricing-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-400); margin: 8px 0 16px; line-height: 1.5; }
+  .pricing-feature { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-600); padding: 6px 0; border-bottom: 1px solid #f5f5f2; }
+  .pricing-check { width: 16px; height: 16px; border-radius: 50%; background: var(--teal-50); border: 1px solid var(--teal-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pricing-check::after { content: ''; display: block; width: 6px; height: 4px; border-left: 1.5px solid var(--teal-600); border-bottom: 1.5px solid var(--teal-600); transform: rotate(-45deg) translateY(-1px); }
+  .pricing-btn { width: 100%; margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 11px; border-radius: 10px; border: 1px solid #ddd; cursor: pointer; transition: all 0.15s; background: #fff; color: #111; }
+  .pricing-btn:hover { border-color: var(--teal-400); color: var(--teal-600); }
+  .pricing-btn.featured-btn { background: var(--teal-600); color: #fff; border-color: var(--teal-600); }
+  .pricing-btn.featured-btn:hover { background: var(--teal-800); }
+
+  /* ── FAQ ── */
+  .faq-item { border-bottom: 1px solid #f0f0ee; }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 18px 0; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #111; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
+  .faq-icon-bar { width: 10px; height: 2px; background: var(--gray-600); border-radius: 1px; position: relative; transition: transform 0.2s; }
+  .faq-icon-bar::after { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 2px; background: var(--gray-600); border-radius: 1px; transform: rotate(90deg); transition: opacity 0.2s; }
+  .faq-a { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--gray-600); line-height: 1.7; padding-bottom: 18px; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-icon-bar::after { opacity: 0; }
+  .faq-item.open .faq-icon { background: var(--teal-50); }
+
+  /* ── SIDEBAR DEMO ── */
+  .app-shell { border: 1px solid #ebebea; border-radius: 16px; overflow: hidden; display: flex; height: 300px; }
+  .app-sidebar { width: 190px; background: #fff; border-right: 1px solid #ebebea; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; }
+  .sidebar-brand { display: flex; align-items: center; gap: 8px; padding: 6px 8px 16px; border-bottom: 1px solid #f0f0ee; margin-bottom: 10px; }
+  .brand-mark { width: 26px; height: 26px; background: var(--teal-600); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+  .brand-mark-inner { width: 10px; height: 10px; background: var(--teal-100); border-radius: 50%; }
+  .brand-name { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #111; letter-spacing: -0.02em; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--gray-400); cursor: pointer; transition: all 0.15s; }
+  .nav-item:hover { background: var(--gray-100); color: #111; }
+  .nav-item.active { background: var(--teal-50); color: var(--teal-800); }
+  .nav-icon { width: 16px; height: 16px; border-radius: 4px; background: currentColor; opacity: 0.35; flex-shrink: 0; }
+  .nav-item.active .nav-icon { opacity: 0.8; }
+  .nav-bottom { margin-top: auto; padding-top: 12px; border-top: 1px solid #f0f0ee; }
+  .app-main { flex: 1; background: var(--gray-50); display: flex; flex-direction: column; }
+  .app-topbar { background: #fff; border-bottom: 1px solid #ebebea; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .app-topbar-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #111; }
+  .app-av { width: 28px; height: 28px; border-radius: 50%; background: var(--teal-100); display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: var(--teal-800); }
+  .app-content { flex: 1; padding: 18px; display: flex; align-items: center; justify-content: center; }
+  .app-content-label { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--gray-400); }
+
+  /* ── MOTION GUIDE ── */
+  .motion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .motion-card { background: var(--gray-50); border: 1px solid #ebebea; border-radius: 12px; padding: 16px; }
+  .motion-name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #111; margin-bottom: 4px; }
+  .motion-val { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--teal-600); font-weight: 500; margin-bottom: 2px; }
+  .motion-desc { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--gray-400); }
+
+  /* ── SPACING ── */
+  .spacing-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  .spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .spacing-block { background: var(--teal-400); border-radius: 4px; opacity: 0.75; }
+  .spacing-val { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--gray-400); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── CTA SECTION ── */
+  .cta-section { background: var(--teal-900); border-radius: 20px; padding: 64px 48px; text-align: center; }
+  .cta-icon { width: 56px; height: 56px; background: var(--teal-400); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .cta-icon-inner { width: 22px; height: 22px; background: var(--teal-900); border-radius: 50%; }
+  .cta-title { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -0.025em; margin-bottom: 12px; }
+  .cta-sub { font-family: 'Inter', sans-serif; font-size: 16px; color: var(--teal-100); margin-bottom: 28px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn-primary { background: var(--teal-400); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 10px; border: none; cursor: pointer; }
+  .cta-btn-ghost { background: transparent; color: var(--teal-100); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; }
+</style>
+
+<div class="guide">
+
+  <!-- HERO -->
+  <div class="hero-demo reveal">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span> Join 1,000+ knowledge-driven companies</div>
+    <h1 class="hero-h1">Your company's<br><span>private AI brain.</span></h1>
+    <p class="hero-sub">Stop searching. Start knowing. Claiv gives your team instant answers from your internal documents, policies and SOPs.</p>
+    <div class="hero-btns">
+      <button class="btn-hero-primary">Ask Claiv free</button>
+      <button class="btn-hero-ghost">Book a demo →</button>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-avatars">
+        <div class="hero-av">JD</div>
+        <div class="hero-av">AM</div>
+        <div class="hero-av">RK</div>
+        <div class="hero-av">+</div>
+      </div>
+      <div class="hero-trust-text">Trusted by <strong>1,000+ teams</strong> across 40+ countries</div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="sec reveal">
+    <div class="sec-title">Trusted by fast-moving companies</div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="marquee-item"><span class="marquee-badge"></span>Manufacturing</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Logistics</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Consulting</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Mid-size Tech</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>HR Teams</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Finance</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Operations</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Engineering</div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-item"><span class="marquee-badge"></span>Manufacturing</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Logistics</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Consulting</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Mid-size Tech</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>HR Teams</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Finance</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Operations</div>
+        <div class="marquee-item"><span class="marquee-badge"></span>Engineering</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>Typography</div>
+    <div class="sec-title">Type scale — Inter</div>
+    <div class="type-stack">
+      <div class="type-row"><div class="type-meta">Display / 48px / 600<br>tracking −0.03em</div><div class="t-display">Ask anything.</div></div>
+      <div class="type-row"><div class="type-meta">H1 / 36px / 600<br>tracking −0.025em</div><div class="t-h1">Internal knowledge, reimagined.</div></div>
+      <div class="type-row"><div class="type-meta">H2 / 26px / 600<br>tracking −0.02em</div><div class="t-h2">Document management</div></div>
+      <div class="type-row"><div class="type-meta">H3 / 19px / 600<br>tracking −0.01em</div><div class="t-h3">Upload and organise your files</div></div>
+      <div class="type-row"><div class="type-meta">Body / 16px / 400<br>line-height 1.7</div><div class="t-body">Claiv gives your team instant answers from your internal documents — no more wasted hours searching across drives, emails and PDFs.</div></div>
+      <div class="type-row"><div class="type-meta">Small / 14px / 400</div><div class="t-sm">Source: Employee Handbook v3.pdf — page 12</div></div>
+      <div class="type-row"><div class="type-meta">Caption / 12px / 500<br>tracking 0.04em</div><div class="t-cap">claiv.io · Processed · 4 chunks · Updated 2h ago</div></div>
+      <div class="type-row"><div class="type-meta">URL / 13px / 500</div><div class="t-url">claiv.io</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COLORS -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>Colors</div>
+    <div class="sec-title">Color system</div>
+    <div class="color-grid">
+      <div class="color-group">
+        <div class="color-swatch-main" style="background:#0F6E56;"><span style="color:#9FE1CB;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;">Primary</span></div>
+        <div class="color-stops">
+          <div class="color-stop" style="background:#E1F5EE;"></div>
+          <div class="color-stop" style="background:#9FE1CB;"></div>
+          <div class="color-stop" style="background:#1D9E75;"></div>
+          <div class="color-stop" style="background:#0F6E56;"></div>
+          <div class="color-stop" style="background:#085041;"></div>
+          <div class="color-stop" style="background:#04342C;"></div>
+        </div>
+        <div class="color-label">Claiv Teal <div class="color-hex">#1D9E75 core · #0F6E56 button</div></div>
+      </div>
+      <div class="color-group">
+        <div class="color-swatch-main" style="background:#888780;"><span style="color:#F1EFE8;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;">Neutral</span></div>
+        <div class="color-stops">
+          <div class="color-stop" style="background:#F7F7F5;"></div>
+          <div class="color-stop" style="background:#F1EFE8;"></div>
+          <div class="color-stop" style="background:#D3D1C7;"></div>
+          <div class="color-stop" style="background:#888780;"></div>
+          <div class="color-stop" style="background:#5F5E5A;"></div>
+          <div class="color-stop" style="background:#2C2C2A;"></div>
+        </div>
+        <div class="color-label">Gray <div class="color-hex">#888780 body · #2C2C2A dark</div></div>
+      </div>
+      <div class="color-group">
+        <div class="color-swatch-main" style="background:#EF9F27;"><span style="color:#412402;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;">Warning</span></div>
+        <div class="color-stops">
+          <div class="color-stop" style="background:#FAEEDA;"></div>
+          <div class="color-stop" style="background:#FAC775;"></div>
+          <div class="color-stop" style="background:#EF9F27;"></div>
+          <div class="color-stop" style="background:#BA7517;"></div>
+          <div class="color-stop" style="background:#854F0B;"></div>
+        </div>
+        <div class="color-label">Amber <div class="color-hex">#EF9F27 core</div></div>
+      </div>
+      <div class="color-group">
+        <div class="color-swatch-main" style="background:#E24B4A;"><span style="color:#FCEBEB;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;">Danger</span></div>
+        <div class="color-stops">
+          <div class="color-stop" style="background:#FCEBEB;"></div>
+          <div class="color-stop" style="background:#F7C1C1;"></div>
+          <div class="color-stop" style="background:#E24B4A;"></div>
+          <div class="color-stop" style="background:#A32D2D;"></div>
+          <div class="color-stop" style="background:#791F1F;"></div>
+        </div>
+        <div class="color-label">Red <div class="color-hex">#E24B4A core</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BUTTONS -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>Components</div>
+    <div class="sec-title">Buttons</div>
+    <div class="btn-grid">
+      <button class="btn btn-primary btn-lg">Ask Claiv</button>
+      <button class="btn btn-primary">Upload documents</button>
+      <button class="btn btn-secondary">View sources</button>
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-danger btn-sm">Delete</button>
+      <button class="btn btn-primary btn-pill">Get started →</button>
+      <button class="btn btn-primary btn-dis" disabled>Disabled</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BADGES -->
+  <div class="sec reveal">
+    <div class="sec-title">Badges & status</div>
+    <div class="badge-grid">
+      <span class="badge b-teal"><span class="badge-dot"></span>Processed</span>
+      <span class="badge b-amber"><span class="badge-dot"></span>Pending</span>
+      <span class="badge b-red"><span class="badge-dot"></span>Failed</span>
+      <span class="badge b-purple">Super Admin</span>
+      <span class="badge b-teal">Admin</span>
+      <span class="badge b-blue">Dept. Manager</span>
+      <span class="badge b-gray">Employee</span>
+      <span class="badge b-gray">Guest</span>
+      <span class="badge b-teal">HR</span>
+      <span class="badge b-blue">Engineering</span>
+      <span class="badge b-gray">Finance</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BENTO GRID -->
+  <div class="sec reveal">
+    <div class="sec-title">Bento feature grid (Salix-style)</div>
+    <div class="bento">
+      <div class="bento-lg">
+        <div>
+          <div class="bento-label">Universal search</div>
+          <div class="bento-h">Find anything across your internal data instantly</div>
+          <div class="bento-p">PDFs, Word docs, SOPs, Notion exports — one place, zero searching.</div>
+        </div>
+        <div class="bento-stat">42h <span style="font-size:14px;font-weight:400;color:var(--gray-400);">saved / team / week</span></div>
+      </div>
+      <div class="bento-sm">
+        <div class="bento-label">Role-based answers</div>
+        <div class="bento-h">HR sees HR. Engineers see code.</div>
+        <div class="bento-p">Scoped by department automatically.</div>
+      </div>
+      <div class="bento-accent">
+        <div class="bento-label bento-label-light">Source trust</div>
+        <div class="bento-h bento-h-light">Every answer cites its source</div>
+        <div class="bento-p bento-p-light">Builds enterprise confidence from day one.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INPUTS -->
+  <div class="sec reveal">
+    <div class="sec-title">Form inputs</div>
+    <div class="input-grid">
+      <div class="input-wrap">
+        <div class="input-label">Search knowledge base</div>
+        <input class="input-field" placeholder="Ask Claiv anything about your company..." />
+        <div class="input-helper">Press ⌘K to focus anywhere</div>
+      </div>
+      <div class="input-wrap">
+        <div class="input-label">Work email</div>
+        <input class="input-field error" value="not-an-email" />
+        <div class="input-error-msg">Enter a valid work email address</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHAT -->
+  <div class="sec reveal">
+    <div class="sec-title">Claiv chat UI</div>
+    <div class="chat-shell">
+      <div class="chat-topbar">
+        <div class="chat-av"><div class="chat-av-dot"></div></div>
+        <div>
+          <div class="chat-name">Claiv</div>
+          <div class="chat-status">Online · HR scope</div>
+        </div>
+        <div style="margin-left:auto;"><span class="badge b-teal" style="font-size:11px;">HR dept.</span></div>
+      </div>
+      <div class="chat-body">
+        <div class="bubble-user">What is our refund policy for SaaS clients?</div>
+        <div>
+          <div class="bubble-ai">
+            SaaS clients are eligible for a full refund within 14 days of purchase, provided usage is below 20% of plan limits. After 14 days, partial credits may apply at management discretion.
+            <div class="source-row">
+              <span class="source-chip">📄 Refund Policy v2.pdf — p.4</span>
+              <span class="source-chip">📄 Client Terms 2024.docx</span>
+            </div>
+          </div>
+          <div class="chat-meta">Claiv · 2 sources · Confidence: high · 0.8s</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" placeholder="Ask Claiv anything about your company..." />
+        <button class="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIAL DARK -->
+  <div class="testimonial-dark reveal">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Claiv completely changed how our team finds information. What used to take hours now takes seconds — and everyone trusts the answers because the sources are right there.</div>
+    <div class="quote-author">
+      <div class="quote-av">AM</div>
+      <div>
+        <div class="quote-name">Amina Musa</div>
+        <div class="quote-role">Head of Operations, TechCo Lagos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>How it works</div>
+    <div class="sec-title">Three steps to a smarter company</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Upload your documents</div>
+        <div class="step-body">PDFs, Word docs, CSVs, URLs — drag, drop, done. Claiv processes and indexes everything automatically.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Set roles & departments</div>
+        <div class="step-body">Assign users to departments. HR sees HR answers. Engineers see technical docs. Everything scoped automatically.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Ask Claiv anything</div>
+        <div class="step-body">Your team gets instant, sourced answers. No more Slack pings, no more wasted hours hunting through drives.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>Pricing</div>
+    <div class="sec-title">Choose your plan</div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">$25K <span>one-time</span></div>
+        <div class="pricing-desc">For small teams getting started with internal knowledge AI.</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Up to 500 documents</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>2 departments</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Admin + Employee roles</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Email support</div>
+        <button class="pricing-btn">Get started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most popular</div>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price">$50K <span>one-time</span></div>
+        <div class="pricing-desc">Role-based AI, advanced analytics, and unlimited documents.</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Unlimited documents</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>5 departments</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>All 5 user roles</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Analytics dashboard</div>
+        <button class="pricing-btn featured-btn">Ask Claiv free</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-price">$75K+ <span>one-time</span></div>
+        <div class="pricing-desc">Custom integrations, dedicated deployment, and SLA support.</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Custom integrations</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Dedicated deployment</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Slack / WhatsApp bot</div>
+        <div class="pricing-feature"><span class="pricing-check"></span>Dedicated SLA</div>
+        <button class="pricing-btn">Talk to sales</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>FAQ</div>
+    <div class="sec-title">Frequently asked questions</div>
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFaq(this)">Is my company data private and secure? <span class="faq-icon"><span class="faq-icon-bar"></span></span></button>
+      <div class="faq-a">Yes. Every Claiv deployment is isolated per organisation. Your data never mixes with other clients, and all documents are stored with encryption at rest and in transit.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What file types does Claiv support? <span class="faq-icon"><span class="faq-icon-bar"></span></span></button>
+      <div class="faq-a">PDFs, Word documents (.docx), CSVs, plain text files, and URLs. More formats are added regularly.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long does onboarding take? <span class="faq-icon"><span class="faq-icon-bar"></span></span></button>
+      <div class="faq-a">Most companies are live within 2–3 weeks. Week 1 is data ingestion, week 2 is the chat UI and retrieval setup, week 3 is admin polish and role configuration.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can we add Slack or WhatsApp access? <span class="faq-icon"><span class="faq-icon-bar"></span></span></button>
+      <div class="faq-a">Yes — Slack and WhatsApp bot integrations are available on Enterprise plans, allowing your team to ask Claiv directly from their existing messaging tools.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MOTION GUIDE -->
+  <div class="sec reveal">
+    <div class="sec-pill"><span class="sec-pill-dot"></span>Motion</div>
+    <div class="sec-title">Animation system (Salix-aligned)</div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-name">Scroll reveal</div>
+        <div class="motion-val">opacity 0→1 + Y 24px→0</div>
+        <div class="motion-desc">500ms ease · stagger 80ms per element</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Marquee ticker</div>
+        <div class="motion-val">translateX loop</div>
+        <div class="motion-desc">18s linear infinite · pauses on hover</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Card hover</div>
+        <div class="motion-val">translateY −2px</div>
+        <div class="motion-desc">200ms ease · box-shadow lift</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Button press</div>
+        <div class="motion-val">scale(0.98)</div>
+        <div class="motion-desc">100ms · active state only</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">FAQ accordion</div>
+        <div class="motion-val">height auto · display toggle</div>
+        <div class="motion-desc">200ms ease-out</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Nav glass</div>
+        <div class="motion-val">backdrop-filter blur</div>
+        <div class="motion-desc">Activates on scroll Y > 60px</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Input focus</div>
+        <div class="motion-val">ring 3px teal 12%</div>
+        <div class="motion-desc">150ms · border-color shift</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Pulse dot</div>
+        <div class="motion-val">scale + opacity loop</div>
+        <div class="motion-desc">2s infinite · hero eyebrow</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SPACING -->
+  <div class="sec reveal">
+    <div class="sec-title">Spacing scale — 8px base</div>
+    <div class="spacing-row">
+      <div class="spacing-item"><div class="spacing-block" style="width:8px;height:4px;"></div><div class="spacing-val">4</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:8px;height:8px;"></div><div class="spacing-val">8</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:12px;height:12px;"></div><div class="spacing-val">12</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:16px;height:16px;"></div><div class="spacing-val">16</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:24px;height:24px;"></div><div class="spacing-val">24</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:32px;height:32px;"></div><div class="spacing-val">32</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:48px;height:48px;"></div><div class="spacing-val">48</div></div>
+      <div class="spacing-item"><div class="spacing-block" style="width:64px;height:64px;"></div><div class="spacing-val">64</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- APP LAYOUT -->
+  <div class="sec reveal">
+    <div class="sec-title">App layout — Claiv sidebar</div>
+    <div class="app-shell">
+      <div class="app-sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-mark"><div class="brand-mark-inner"></div></div>
+          <div class="brand-name">Claiv</div>
+        </div>
+        <div class="nav-item active"><div class="nav-icon"></div>Ask Claiv</div>
+        <div class="nav-item"><div class="nav-icon"></div>Documents</div>
+        <div class="nav-item"><div class="nav-icon"></div>Analytics</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+        <div class="nav-bottom">
+          <div class="nav-item"><div class="app-av" style="width:20px;height:20px;font-size:9px;">JD</div>John D.</div>
+        </div>
+      </div>
+      <div class="app-main">
+        <div class="app-topbar">
+          <div class="app-topbar-title">Ask Claiv</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="badge b-teal" style="font-size:11px;">HR dept.</span>
+            <div class="app-av">JD</div>
+          </div>
+        </div>
+        <div class="app-content"><div class="app-content-label">Chat interface renders here</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <div class="cta-icon"><div class="cta-icon-inner"></div></div>
+    <div class="cta-title">Ask Claiv free for 14 days</div>
+    <div class="cta-sub">Start taking control of your company knowledge today</div>
+    <div class="cta-btns">
+      <button class="cta-btn-primary">Get started free</button>
+      <button class="cta-btn-ghost">Book a demo →</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
